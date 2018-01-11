@@ -22,6 +22,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var placemark: CLPlacemark?
     var performingReverseGeocoding = false
     var lastGeocodingError: Error?
+	var timer: Timer?
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -94,7 +95,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             
             tagButton.isHidden = false
             messageLabel.text = ""
-            
+			
             if let placemark = placemark {
                 addressLabel.text = string(from: placemark)
             } else if performingReverseGeocoding {
@@ -129,7 +130,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             messageLabel.text = statusMessage
         }
         configureGetButton()
-        
+		
     }
     
     func startLocationManager() {
@@ -138,6 +139,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
             updatingLocation = true
+			timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(didTimeOut), userInfo: nil, repeats: false)
         }
     }
     
@@ -146,21 +148,24 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+			if let timer = timer {
+				timer.invalidate()
+			}
         }
     }
-    
+	
     func string(from placemark: CLPlacemark) -> String {
         var line1 = ""
-        
+		
         if let s = placemark.subThoroughfare {
             line1 += s + " "
         }
         if let s = placemark.thoroughfare {
             line1 += s
         }
-        
+		
         var line2 = ""
-        
+		
         if let s = placemark.locality {
             line2 += s + " "
         }
@@ -173,6 +178,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         return line1 + "\n" + line2
     }
 
+	//objevtive c accessible func
+	@objc func didTimeOut() {
+		print("Time out")
+		if location == nil {
+			stopLocationManager()
+			lastLoctionError = NSError(domain: "MyLocationErrorDomain", code: 1, userInfo: nil)
+			updateLabels()
+		}
+	}
 
     //MARK: - CLLocationManageDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -199,7 +213,12 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         if newLocation.horizontalAccuracy < 0 {
             return
         }
-        
+		
+		var distance = CLLocationDistance(Double.greatestFiniteMagnitude)
+		if let location = location {
+			distance = newLocation.distance(from: location)
+		}
+		
         //3
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
             //4
@@ -213,6 +232,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 stopLocationManager()
             }
             updateLabels()
+			
+			if distance > 0 {
+				performingReverseGeocoding = false
+			}
             
             if !performingReverseGeocoding {
                 print("*** Going to geocode")
@@ -232,6 +255,35 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                     self.updateLabels()
                     })
                 }
-            }
+		} else if distance < 1 {
+			let timeInterval = newLocation.timestamp.timeIntervalSince(location!.timestamp)
+			if timeInterval > 10 {
+				print("*** Force done")
+				stopLocationManager()
+				updateLabels()
+			}
+			}
         }
-    }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.isNavigationBarHidden = true
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationController?.isNavigationBarHidden = false
+	}
+	
+	//MARK:- Navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "TagLocation" {
+			let controller = segue.destination as! LocationDetailsViewController
+			controller.coordinate = location!.coordinate
+			controller.placemark = placemark
+		}
+	}
+	
+}
+
+
