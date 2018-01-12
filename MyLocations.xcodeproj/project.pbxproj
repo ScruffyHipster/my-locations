@@ -15,6 +15,7 @@
 		4A9FECC11FFCD9C8003081A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A9FECBF1FFCD9C8003081A5 /* Main.storyboard */; };
 		4A9FECC31FFCD9C8003081A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9FECC21FFCD9C8003081A5 /* Assets.xcassets */; };
 		4A9FECC61FFCD9C8003081A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A9FECC41FFCD9C8003081A5 /* LaunchScreen.storyboard */; };
+		4AFC0C4D20089FAA00002D37 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC0C4C20089FAA00002D37 /* HudView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4A9FECC21FFCD9C8003081A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A9FECC51FFCD9C8003081A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A9FECC71FFCD9C8003081A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AFC0C4C20089FAA00002D37 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				4A9FECBD1FFCD9C8003081A5 /* SecondViewController.swift */,
 				4A9FECBF1FFCD9C8003081A5 /* Main.storyboard */,
 				4A309A8620055A9E00091AA5 /* LocationsDetailsViewController.swift */,
+				4AFC0C4C20089FAA00002D37 /* HudView.swift */,
 				4A29DB49200757F00008EB3E /* CategoryPickerViewController.swift */,
 				4A9FECC21FFCD9C8003081A5 /* Assets.xcassets */,
 				4A9FECC41FFCD9C8003081A5 /* LaunchScreen.storyboard */,
@@ -147,6 +150,7 @@
 			files = (
 				4A309A8720055A9E00091AA5 /* LocationsDetailsViewController.swift in Sources */,
 				4A9FECBE1FFCD9C8003081A5 /* SecondViewController.swift in Sources */,
+				4AFC0C4D20089FAA00002D37 /* HudView.swift in Sources */,
 				4A9FECBA1FFCD9C8003081A5 /* AppDelegate.swift in Sources */,
 				4A29DB4A200757F00008EB3E /* CategoryPickerViewController.swift in Sources */,
 				4A9FECBC1FFCD9C8003081A5 /* CurrentLocationViewController.swift in Sources */,
