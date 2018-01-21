@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import CoreData
 
 private let dateFormatter: DateFormatter = {
 	let formatter = DateFormatter()
@@ -19,6 +20,20 @@ private let dateFormatter: DateFormatter = {
 }()
 
 class LocationDetailsViewController: UITableViewController {
+	
+	var date = Date()
+	var locationToEdit: Location? {
+		didSet {
+		if let location = locationToEdit {
+			descriptionText = location.locationDescription
+			categoryName = location.category
+			date = location.date
+			coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
+			placemark = location.placemark
+			}
+		}
+	}
+	var descriptionText = ""
 	
 	//Outlets
 	@IBOutlet weak var descriptionTextView: UITextView!
@@ -38,11 +53,16 @@ class LocationDetailsViewController: UITableViewController {
 	var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 	var placemark: CLPlacemark?
 	var categoryName = "No Category"
+	var managedObjectcontext: NSManagedObjectContext!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		descriptionTextView.text = ""
+		if let location = locationToEdit {
+			title = "Edit Location"
+		}
+		
+		descriptionTextView.text = descriptionText
 		categoryLabel.text = categoryName
 		
 		latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
@@ -54,7 +74,7 @@ class LocationDetailsViewController: UITableViewController {
 			addressLabel.text = "No Address Found"
 		}
 		
-		dateLabel.text = format(date: Date())
+		dateLabel.text = format(date: date)
 		
 		//hide keyboard
 		let gestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -66,16 +86,37 @@ class LocationDetailsViewController: UITableViewController {
 	//MARK:- Actions
 	@IBAction func done() {
 		let hudView = HudView.hud(inView: navigationController!.view, animated: true)
-		hudView.text = "Tagged"
 		
-		afterDelay(0.8) {
+		let location: Location
+		
+		if let temp = locationToEdit {
+			hudView.text = "Updated"
+			location = temp
+		} else {
+			hudView.text = "Tapped"
+			location = Location(context: managedObjectcontext)
+		}
+		
+		location.locationDescription = descriptionTextView.text
+		location.category = categoryName
+		location.latitude = coordinate.latitude
+		location.longitude = coordinate.longitude
+		location.date = date
+		location.placemark = placemark
+		
+		do {
+			try managedObjectcontext.save()
+			afterDelay(0.8) {
 			hudView.hideAnimated(animated: true)
 //			hudView.hide()
 			self.navigationController?.popViewController(animated: true)
+			}
+		} catch {
+			fatalCoreDataError(error)
 		}
 	}
 
-	
+
 	@IBAction func cancel() {
 		navigationController?.popViewController(animated: true)
 	}
@@ -161,4 +202,5 @@ class LocationDetailsViewController: UITableViewController {
 }
 	
 	
+
 
