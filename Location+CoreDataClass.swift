@@ -28,5 +28,26 @@ public class Location: NSManagedObject, MKAnnotation {
 	public var subtitle: String? {
 		return category
 	}
-
+	
+	var hasPhoto: Bool {
+		return photoID != nil
+	}
+	
+	var photoURL: URL {
+		assert(photoID != nil, "No photo ID set")
+		let filename = "Photo-\(photoID!.intValue).jpg"
+		return applicationDocumentsDirectory.appendingPathComponent(filename)
+	}
+	
+	var photoImage: UIImage? {
+		return UIImage(contentsOfFile: photoURL.path)
+	}
+	
+	class func nextPhotoID() -> Int {
+		let userDefaults = UserDefaults.standard
+		let currentID = userDefaults.integer(forKey: "photoID") + 1
+		userDefaults.synchronize()
+		userDefaults.set(currentID, forKey: "photoID")
+		return currentID
+	}
 }
