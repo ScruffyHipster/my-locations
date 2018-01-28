@@ -75,6 +75,8 @@ class LocationsViewController: UITableViewController  {
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			let location = fetchedResultsController.object(at: indexPath)
+			location.removePhotoFile()
+			print("the URL is \(location.photoURL)")
 			managerObjectcontext.delete(location)
 			do {
 				try managerObjectcontext.save()
