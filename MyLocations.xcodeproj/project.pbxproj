@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1A9465201DD9980078035F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1A9464201DD9980078035F /* UIImage+Resize.swift */; };
 		4A29DB4A200757F00008EB3E /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A29DB49200757F00008EB3E /* CategoryPickerViewController.swift */; };
 		4A2F313E200E97C900D667FE /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F313D200E97C900D667FE /* LocationsViewController.swift */; };
 		4A309A8720055A9E00091AA5 /* LocationsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A309A8620055A9E00091AA5 /* LocationsDetailsViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A1A9464201DD9980078035F /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		4A29DB49200757F00008EB3E /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		4A2F313D200E97C900D667FE /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		4A309A8620055A9E00091AA5 /* LocationsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsDetailsViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				4A311151200A7E800049C27C /* Location+CoreDataClass.swift */,
+				4A1A9464201DD9980078035F /* UIImage+Resize.swift */,
 				4A311152200A7E800049C27C /* Location+CoreDataProperties.swift */,
 				4A9FECB81FFCD9C8003081A5 /* MyLocations */,
 				4A9FECB71FFCD9C8003081A5 /* Products */,
@@ -193,6 +196,7 @@
 				4A2F313E200E97C900D667FE /* LocationsViewController.swift in Sources */,
 				4A311154200A7E800049C27C /* Location+CoreDataProperties.swift in Sources */,
 				4ADE4A4D2015EB500007638B /* MapViewController.swift in Sources */,
+				4A1A9465201DD9980078035F /* UIImage+Resize.swift in Sources */,
 				4AD2FE87200FE6D900D94CAE /* LocationCell.swift in Sources */,
 				4A31114D2009209B0049C27C /* Functions.swift in Sources */,
 				4A9FECBA1FFCD9C8003081A5 /* AppDelegate.swift in Sources */,

@@ -35,7 +35,7 @@ public class Location: NSManagedObject, MKAnnotation {
 	
 	var photoURL: URL {
 		assert(photoID != nil, "No photo ID set")
-		let filename = "Photo-\(photoID!.intValue).jpg"
+		let filename = "Photo\(photoID!.intValue).jpg"
 		return applicationDocumentsDirectory.appendingPathComponent(filename)
 	}
 	
