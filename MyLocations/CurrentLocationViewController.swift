@@ -179,6 +179,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         return line1 + "\n" + line2
     }
+	
+	
 
 	//objevtive c accessible func
 	@objc func didTimeOut() {

@@ -14,8 +14,12 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Add photos to your location</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Add photos to your location</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>

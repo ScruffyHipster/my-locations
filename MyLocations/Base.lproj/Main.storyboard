@@ -167,6 +167,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h8Z-9h-gFy">
+                                                    <rect key="frame" x="105" y="10" width="181" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -291,10 +295,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPhotoLabel" destination="uDc-Oy-Cw4" id="2K9-Ys-0C3"/>
                         <outlet property="addressLabel" destination="omy-Kq-NhA" id="BKM-4x-m17"/>
                         <outlet property="categoryLabel" destination="kpV-tT-QXg" id="1t2-Hc-3OH"/>
                         <outlet property="dateLabel" destination="HBn-C2-gBF" id="b2g-St-Hxr"/>
                         <outlet property="descriptionTextView" destination="1ft-a7-For" id="0B4-qz-X3q"/>
+                        <outlet property="imageView" destination="h8Z-9h-gFy" id="PYi-DE-eRd"/>
                         <outlet property="latitudeLabel" destination="7OB-2e-4IC" id="3b1-r3-gUy"/>
                         <outlet property="longitudeLabel" destination="vzD-iJ-Bkp" id="wnp-61-V0u"/>
                     </connections>
@@ -377,11 +383,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="ZeM-Ga-MJ7" id="mMk-Wi-XJb"/>
+                        <segue destination="w2A-XL-uKW" kind="show" identifier="EditLocation" id="FEX-Tu-yLa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yy2-Nw-rbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="1233"/>
+            <point key="canvasLocation" x="1626" y="1233"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -419,14 +426,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7x-r9-irV">
-                                            <rect key="frame" x="16" y="11" width="288" height="21"/>
+                                            <rect key="frame" x="91" y="0.0" width="215" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-Rt-p0E">
+                                            <rect key="frame" x="16" y="2" width="52" height="52"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSp-BH-Q97">
-                                            <rect key="frame" x="16" y="35" width="288" height="21"/>
+                                            <rect key="frame" x="91" y="25" width="215" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -437,6 +448,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="tSp-BH-Q97" id="Xja-tr-Z4W"/>
                                     <outlet property="descriptionLabel" destination="e7x-r9-irV" id="1F9-O7-P74"/>
+                                    <outlet property="photoImageView" destination="MrY-Rt-p0E" id="ZUn-xH-Wgw"/>
                                     <segue destination="w2A-XL-uKW" kind="show" identifier="EditLocation" id="MTM-xm-e0N"/>
                                 </connections>
                             </tableViewCell>
@@ -450,7 +462,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nm9-pN-Jbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1625.625" y="486.97183098591552"/>
+            <point key="canvasLocation" x="1625.625" y="404.57746478873241"/>
         </scene>
         <!--Locations-->
         <scene sceneID="HqZ-hn-KsI">
@@ -467,7 +479,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2y-7n-Mlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="489"/>
+            <point key="canvasLocation" x="750" y="405"/>
         </scene>
         <!--Tag-->
         <scene sceneID="evy-nu-Sud">
@@ -505,7 +517,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG0-ea-cRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="1232.7464788732395"/>
+            <point key="canvasLocation" x="750" y="1233"/>
         </scene>
     </scenes>
     <resources>
