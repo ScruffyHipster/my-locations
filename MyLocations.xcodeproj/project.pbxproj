@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A18476C201F8DBD0088A579 /* String+AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A18476B201F8DBD0088A579 /* String+AddText.swift */; };
 		4A1A9465201DD9980078035F /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1A9464201DD9980078035F /* UIImage+Resize.swift */; };
 		4A29DB4A200757F00008EB3E /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A29DB49200757F00008EB3E /* CategoryPickerViewController.swift */; };
 		4A2F313E200E97C900D667FE /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F313D200E97C900D667FE /* LocationsViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A18476B201F8DBD0088A579 /* String+AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AddText.swift"; sourceTree = "<group>"; };
 		4A1A9464201DD9980078035F /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		4A29DB49200757F00008EB3E /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		4A2F313D200E97C900D667FE /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		4A9FECAD1FFCD9C8003081A5 = {
 			isa = PBXGroup;
 			children = (
+				4A18476B201F8DBD0088A579 /* String+AddText.swift */,
 				4A311151200A7E800049C27C /* Location+CoreDataClass.swift */,
 				4A1A9464201DD9980078035F /* UIImage+Resize.swift */,
 				4A311152200A7E800049C27C /* Location+CoreDataProperties.swift */,
@@ -201,6 +204,7 @@
 				4A31114D2009209B0049C27C /* Functions.swift in Sources */,
 				4A9FECBA1FFCD9C8003081A5 /* AppDelegate.swift in Sources */,
 				4A311153200A7E800049C27C /* Location+CoreDataClass.swift in Sources */,
+				4A18476C201F8DBD0088A579 /* String+AddText.swift in Sources */,
 				4A29DB4A200757F00008EB3E /* CategoryPickerViewController.swift in Sources */,
 				4A9FECBC1FFCD9C8003081A5 /* CurrentLocationViewController.swift in Sources */,
 			);
